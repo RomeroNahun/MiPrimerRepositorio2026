@@ -2,8 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import CustomButton from './src/components/CustomButton';
 import CustoInput from './src/components/CustomInput';
+import { useState } from 'react';
 
 export default function App() {
+  //Definicion de una variable de estado en ReacNative
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [name, setname] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
+
+
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
@@ -12,12 +20,27 @@ export default function App() {
       <StatusBar style="auto" />
 
       <CustoInput
-        type={'text'}
-        placeholder={'Nombre de Usuario'}
-        value={''}
-        onChange={function (text: string): void { }} />
+         type={"text"}
+        placeholder={'Ingresa tu Nombre'}
+        value={name}
+        onChange={setname} />
+      <CustoInput
+         type={"number"}
+        placeholder={'Ingrese Su Numero de Telefono'}
+        value={phoneNumber}
+        onChange={setphoneNumber} />
 
-      <Text> </Text>
+      <CustoInput
+        type={'email'}
+        placeholder={'Nombre de Usuario'}
+        value={email}
+        onChange={setemail} />
+      <CustoInput
+        type={'password'}
+        placeholder={'Ingresa tu Contraseña'}
+        value={password}
+        onChange={setpassword} />
+
 
       <CustomButton
         title={"App 🖲️"}
@@ -25,8 +48,6 @@ export default function App() {
           console.log('Press desde Boton App');
         }}
       />
-
-      <Text> </Text>
 
       <CustomButton
         title={"Secondary Buttton"}
@@ -36,8 +57,6 @@ export default function App() {
         variant="Secondary"
       />
 
-
-      <Text> </Text>
 
       <CustomButton
         title={"⚙️ Configuracion"}
